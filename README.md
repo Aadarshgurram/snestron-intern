@@ -23,10 +23,10 @@ This internship provided me with a strong foundation in both frontend and backen
 
 Outputs:
 
-<img width="1919" height="913" alt="Screenshot 2025-09-28 122714" src="https://github.com/user-attachments/assets/23c0c37d-1207-4ca7-8271-8a86ce39195b" />
-<img width="1918" height="909" alt="Screenshot 2025-09-28 122658" src="https://github.com/user-attachments/assets/1fabe0db-d112-463b-8eed-49339ec21cd1" />
-<img width="1912" height="904" alt="Screenshot 2025-09-28 122640" src="https://github.com/user-attachments/assets/3d5575df-b844-473a-9a26-0249ad99e955" />
-<img width="1915" height="906" alt="Screenshot 2025-09-28 122815" src="https://github.com/user-attachments/assets/9475d1d5-46e9-4eba-a034-30d1c4e08f4f" />
-<img width="1917" height="910" alt="Screenshot 2025-09-28 122752" src="https://github.com/user-attachments/assets/9b61f05f-5e22-4ef3-a55b-fec6f0501e01" />
-<img width="1919" height="916" alt="Screenshot 2025-09-28 122732" src="https://github.com/user-attachments/assets/491d16ea-3427-4fde-ae97-ffba941152ab" />
 
+<img width="1912" height="904" alt="Screenshot 2025-09-28 122640" src="https://github.com/user-attachments/assets/b734007c-45a0-45a1-a688-fde9d34cdd32" />
+<img width="1918" height="909" alt="Screenshot 2025-09-28 122658" src="https://github.com/user-attachments/assets/710c9f7c-9b80-4b87-b372-c041cf1cb458" />
+<img width="1919" height="913" alt="Screenshot 2025-09-28 122714" src="https://github.com/user-attachments/assets/187880e0-ca95-463e-a09c-c4b771f054e9" />
+<img width="1919" height="916" alt="Screenshot 2025-09-28 122732" src="https://github.com/user-attachments/assets/a26cb417-2b9a-4efc-94da-66404ab6775c" />
+<img width="1917" height="910" alt="Screenshot 2025-09-28 122752" src="https://github.com/user-attachments/assets/f44e6864-fee2-4659-b3bb-d50e2642886b" />
+<img width="1915" height="906" alt="Screenshot 2025-09-28 122815" src="https://github.com/user-attachments/assets/30e03db0-8cf0-4932-aa86-df030cb04932" />
