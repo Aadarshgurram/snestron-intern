@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - AI & ML Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #111111;
+            --card-bg: #1a1a1a;
+            --neon-blue: #00ffff;
+            --neon-purple: #8a2be2;
+            --neon-red: #ff073a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 7, 58, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-20px); }
+            50% { transform: translateX(20px) translateY(-20px); }
+            75% { transform: translateX(-20px) translateY(20px); }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(26, 26, 26, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98) !important;
+            box-shadow: 0 2px 20px rgba(0, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--neon-blue) !important;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-blue) !important;
+            text-shadow: 0 0 10px var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--neon-blue) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Section Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.5)); }
+        }
+
+        .hero .lead {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .btn-neon {
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-neon:hover {
+            background: var(--neon-blue);
+            color: var(--primary-bg);
+            box-shadow: 0 0 30px var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .profile-photo-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;   /* Move photo to right in its column */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 992px) {
+    .profile-photo-container {
+        justify-content: center; /* Center on tablets and mobile */
+        margin-top: 30px;
+    }
+}
+
+.profile-photo {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    background: var(--card-bg);
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.profile-photo:hover img {
+    transform: scale(1.1);
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-photo:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+    animation: photoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes photoGlow {
+    0% { transform: scale(0.8) rotate(0deg); opacity: 0.3; }
+    100% { transform: scale(1.2) rotate(180deg); opacity: 0.1; }
+}
+
+
+        .about-stats {
+            background: rgba(26, 26, 26, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            padding: 10px;
+        }
+
+        .stat-item h4 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .about-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        /* Skills Section */
+        .skill-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-red));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--neon-blue);
+        }
+
+        /* Projects Section */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        /* Certifications Section */
+        .cert-item {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-control {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 15px;
+        }
+
+        .form-control:focus {
+            background: var(--secondary-bg);
+            border-color: var(--neon-blue);
+            color: var(--text-primary);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 58px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-blue);
+            color: var(--primary-bg);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-bg);
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .skill-item,
+            .project-card {
+                margin-bottom: 20px;
+            }
+
+            .profile-photo {
+                width: 250px;
+                height: 250px;
+            }
+
+            .about-stats {
+                margin-top: 30px;
+                padding: 20px;
+            }
+
+            .stat-item h4 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-purple);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Aadarsh Gurram</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certifications">Certifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content fade-in">
+                    <h1>AI & ML Engineer</h1>
+                    <p class="lead">Transforming ideas into intelligent solutions with cutting-edge technology</p>
+                    <button class="btn btn-neon me-3" onclick="scrollToSection('about')">Explore My Work</button>
+                    <button class="btn btn-outline-light" onclick="scrollToSection('contact')">Get In Touch</button>
+                </div>
+                <div class="col-lg-6 text-center slide-in-right">
+                    <div style="font-size: 15rem; color: var(--neon-blue); opacity: 0.3;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+   <section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in">About Me</h2>
+    <div class="row align-items-center">
+      
+      <!-- Left Column: About Content -->
+      <div class="col-lg-8">
+        <div class="about-content fade-in">
+          <h3 class="mb-4" style="color: var(--neon-blue);">Hi, I'm Aadarsh Gurram</h3>
+          <p class="lead mb-4">
+            An AI and ML Engineer with a B.Tech in Computer Science from Sri Venkateswara College of Engineering and Technology. 
+            I'm passionate about leveraging artificial intelligence and machine learning to solve 
+            real-world problems and create innovative solutions.
+          </p>
+          <p>
+            With expertise in Python development, frontend technologies, and advanced AI/ML frameworks, 
+            I specialize in building intelligent systems that make a difference. My journey in technology 
+            began during my undergraduate studies, where I discovered my fascination with the intersection 
+            of computer science and artificial intelligence.
+          </p>
+          <p>
+            I believe in continuous learning and staying at the forefront of technological advancement. 
+            When I'm not coding, you'll find me exploring the latest research papers, contributing to 
+            open-source projects, or mentoring fellow developers.
+          </p>
+          <div class="about-stats mt-4">
+            <div class="row text-center">
+              <div class="col-4">
+                <div class="stat-item">
+                  <h4 style="color: var(--neon-blue);">4</h4>
+                  <p>Projects Completed</p>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <h4 style="color: var(--neon-purple);">Fresher</h4>
+                  <p>Years Experience</p>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <h4 style="color: var(--neon-red);">5+</h4>
+                  <p>Certifications</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Profile Photo -->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="profile-photo-container slide-in-right">
+          <div class="profile-photo">
+            <img src="profile.jpg" alt="Profile Photo" class="img-fluid">
+            <div class="photo-overlay">
+              <div class="photo-glow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="section" style="background: var(--secondary-bg);">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item slide-in-left">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Frontend Developer</h4>
+                        <p>Expert in modern web technologies including HTML5, CSS3, JavaScript, React, and responsive design principles.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h4>Python Developer</h4>
+                        <p><strong>Intermediate Level</strong><br>Proficient in Python programming, Django, Flask, data analysis, and automation scripting.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item slide-in-right">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>AI and ML Engineer</h4>
+                        <p>Specialized in machine learning algorithms, deep learning, neural networks, and AI model deployment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" data-bs-toggle="modal" data-bs-target="#project1Modal">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h5>AI Chatbot Platform</h5>
+                            <p>Intelligent conversational AI system built with NLP and machine learning.</p>
+                            <span class="badge bg-primary me-2">Python</span>
+                            <span class="badge bg-secondary me-2">TensorFlow</span>
+                            <span class="badge bg-success">NLP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" data-bs-toggle="modal" data-bs-target="#project2Modal">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h5>Data Analytics Dashboard</h5>
+                            <p>Interactive web dashboard for real-time data visualization and analysis.</p>
+                            <span class="badge bg-primary me-2">React</span>
+                            <span class="badge bg-secondary me-2">D3.js</span>
+                            <span class="badge bg-success">Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in" data-bs-toggle="modal" data-bs-target="#project3Modal">
+                        <div class="project-image">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="project-content">
+                            <h5>Computer Vision System</h5>
+                            <p>Advanced image recognition and object detection system using deep learning.</p>
+                            <span class="badge bg-primary me-2">OpenCV</span>
+                            <span class="badge bg-secondary me-2">PyTorch</span>
+                            <span class="badge bg-success">AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section" style="background: var(--secondary-bg);">
+        <div class="container">
+            <h2 class="section-title fade-in">Certifications</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-item fade-in" data-bs-toggle="modal" data-bs-target="#cert1Modal">
+                        <i class="fas fa-certificate mb-3" style="font-size: 3rem; color: var(--neon-blue);"></i>
+                        <h5>AWS Certified Cloud Practitioner</h5>
+                        <p>Amazon Web Services</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-item fade-in" data-bs-toggle="modal" data-bs-target="#cert2Modal">
+                        <i class="fas fa-brain mb-3" style="font-size: 3rem; color: var(--neon-purple);"></i>
+                        <h5>Machine Learning Specialization</h5>
+                        <p>Stanford University</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-item fade-in" data-bs-toggle="modal" data-bs-target="#cert3Modal">
+                        <i class="fab fa-python mb-3" style="font-size: 3rem; color: var(--neon-red);"></i>
+                        <h5>Python for Data Science</h5>
+                        <p>IBM</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-item fade-in" data-bs-toggle="modal" data-bs-target="#cert4Modal">
+                        <i class="fas fa-code mb-3" style="font-size: 3rem; color: var(--neon-blue);"></i>
+                        <h5>Full Stack Web Development</h5>
+                        <p>FreeCodeCamp</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact Me</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form fade-in">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-neon">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="slide-in-right">
+                        <h4 class="mb-4">Get In Touch</h4>
+                        <div class="mb-3">
+                            <i class="fas fa-envelope me-3" style="color: var(--neon-blue);"></i>
+                            <a href="mailto:your.email@example.com" style="color: var(--text-secondary);">your.email@example.com</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-phone me-3" style="color: var(--neon-blue);"></i>
+                            <span style="color: var(--text-secondary);">+1 (555) 123-4567</span>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved. | Built with passion and cutting-edge technology.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <div class="modal fade" id="project1Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">AI Chatbot Platform</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/600x300/0a0a0a/00ffff?text=AI+Chatbot+Platform" class="img-fluid rounded" alt="AI Chatbot Platform">
+                    </div>
+                    <h6>Project Overview</h6>
+                    <p>This intelligent conversational AI system leverages advanced NLP techniques and machine learning algorithms to provide human-like interactions. Built with scalability and performance in mind.</p>
+                    <h6>Key Features</h6>
+                    <ul>
+                        <li>Natural language understanding and processing</li>
+                        <li>Context-aware conversation management</li>
+                        <li>Multi-language support</li>
+                        <li>Real-time response generation</li>
+                        <li>Integration with popular messaging platforms</li>
+                    </ul>
+                    <h6>Technologies Used</h6>
+                    <span class="badge bg-primary me-2">Python</span>
+                    <span class="badge bg-secondary me-2">TensorFlow</span>
+                    <span class="badge bg-success me-2">NLP</span>
+                    <span class="badge bg-warning me-2">Flask</span>
+                    <span class="badge bg-info">MongoDB</span>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon me-2">View Live Demo</a>
+                    <a href="#" class="btn btn-outline-light">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="project2Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Data Analytics Dashboard</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/600x300/0a0a0a/8a2be2?text=Analytics+Dashboard" class="img-fluid rounded" alt="Data Analytics Dashboard">
+                    </div>
+                    <h6>Project Overview</h6>
+                    <p>A comprehensive data analytics dashboard that provides real-time insights through interactive visualizations. Designed for business intelligence and data-driven decision making.</p>
+                    <h6>Key Features</h6>
+                    <ul>
+                        <li>Real-time data processing and visualization</li>
+                        <li>Interactive charts and graphs</li>
+                        <li>Customizable dashboard layouts</li>
+                        <li>Data export and reporting capabilities</li>
+                        <li>Multi-user access control</li>
+                    </ul>
+                    <h6>Technologies Used</h6>
+                    <span class="badge bg-primary me-2">React</span>
+                    <span class="badge bg-secondary me-2">D3.js</span>
+                    <span class="badge bg-success me-2">Python</span>
+                    <span class="badge bg-warning me-2">FastAPI</span>
+                    <span class="badge bg-info">PostgreSQL</span>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon me-2">View Live Demo</a>
+                    <a href="#" class="btn btn-outline-light">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="project3Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Computer Vision System</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <img src="https://via.placeholder.com/600x300/0a0a0a/ff073a?text=Computer+Vision+System" class="img-fluid rounded" alt="Computer Vision System">
+                    </div>
+                    <h6>Project Overview</h6>
+                    <p>Advanced computer vision system capable of real-time object detection, image classification, and facial recognition. Implemented using state-of-the-art deep learning models.</p>
+                    <h6>Key Features</h6>
+                    <ul>
+                        <li>Real-time object detection and tracking</li>
+                        <li>Multi-class image classification</li>
+                        <li>Facial recognition and emotion detection</li>
+                        <li>Custom model training pipeline</li>
+                        <li>Edge deployment optimization</li>
+                    </ul>
+                    <h6>Technologies Used</h6>
+                    <span class="badge bg-primary me-2">OpenCV</span>
+                    <span class="badge bg-secondary me-2">PyTorch</span>
+                    <span class="badge bg-success me-2">AI</span>
+                    <span class="badge bg-warning me-2">YOLO</span>
+                    <span class="badge bg-info">Docker</span>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon me-2">View Live Demo</a>
+                    <a href="#" class="btn btn-outline-light">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certification Modals -->
+    <div class="modal fade" id="cert1Modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">AWS Certified Cloud Practitioner</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-certificate" style="font-size: 5rem; color: var(--neon-blue);"></i>
+                    </div>
+                    <h6>Certification Details</h6>
+                    <p><strong>Issuing Organization:</strong> Amazon Web Services</p>
+                    <p><strong>Issue Date:</strong> January 2024</p>
+                    <p><strong>Credential ID:</strong> AWS-CCP-2024-001</p>
+                    <p><strong>Skills Validated:</strong></p>
+                    <ul>
+                        <li>Cloud computing fundamentals</li>
+                        <li>AWS core services</li>
+                        <li>Security and compliance</li>
+                        <li>Billing and pricing</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon">Verify Certificate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cert2Modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Machine Learning Specialization</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-brain" style="font-size: 5rem; color: var(--neon-purple);"></i>
+                    </div>
+                    <h6>Certification Details</h6>
+                    <p><strong>Issuing Organization:</strong> Stanford University</p>
+                    <p><strong>Issue Date:</strong> December 2023</p>
+                    <p><strong>Credential ID:</strong> STAN-ML-2023-456</p>
+                    <p><strong>Skills Validated:</strong></p>
+                    <ul>
+                        <li>Supervised learning algorithms</li>
+                        <li>Unsupervised learning</li>
+                        <li>Neural networks and deep learning</li>
+                        <li>Machine learning project best practices</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon">Verify Certificate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cert3Modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Python for Data Science</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-python" style="font-size: 5rem; color: var(--neon-red);"></i>
+                    </div>
+                    <h6>Certification Details</h6>
+                    <p><strong>Issuing Organization:</strong> IBM</p>
+                    <p><strong>Issue Date:</strong> November 2023</p>
+                    <p><strong>Credential ID:</strong> IBM-PDS-2023-789</p>
+                    <p><strong>Skills Validated:</strong></p>
+                    <ul>
+                        <li>Python programming fundamentals</li>
+                        <li>Data manipulation with Pandas</li>
+                        <li>Data visualization with Matplotlib</li>
+                        <li>Statistical analysis and modeling</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon">Verify Certificate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cert4Modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Full Stack Web Development</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-code" style="font-size: 5rem; color: var(--neon-blue);"></i>
+                    </div>
+                    <h6>Certification Details</h6>
+                    <p><strong>Issuing Organization:</strong> FreeCodeCamp</p>
+                    <p><strong>Issue Date:</strong> October 2023</p>
+                    <p><strong>Credential ID:</strong> FCC-FSWD-2023-321</p>
+                    <p><strong>Skills Validated:</strong></p>
+                    <ul>
+                        <li>Frontend development (HTML, CSS, JavaScript)</li>
+                        <li>Backend development (Node.js, Express)</li>
+                        <li>Database management (MongoDB, SQL)</li>
+                        <li>API development and integration</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-neon">Verify Certificate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active nav link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add smooth scrolling to nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (name && email && message) {
+                // Simulate form submission
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Add typing effect to hero text
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero h1');
+                if (heroTitle) {
+                    typeWriter(heroTitle, 'AI & ML Engineer', 150);
+                }
+            }, 1000);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add mouse follow effect for cursor
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: radial-gradient(circle, var(--neon-blue), transparent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    mix-blend-mode: difference;
+                    transition: transform 0.1s ease;
+                `;
+                document.body.appendChild(newCursor);
+            }
+            
+            const cursor2 = document.querySelector('.cursor');
+            if (cursor2) {
+                cursor2.style.left = e.clientX - 10 + 'px';
+                cursor2.style.top = e.clientY - 10 + 'px';
+            }
+        });
+
+        // Add click ripple effect
+        document.addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(0, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+                z-index: 1000;
+            `;
+            
+            const size = 60;
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - size / 2) + 'px';
+            ripple.style.top = (e.clientY - size / 2) + 'px';
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Preloader effect
+        window.addEventListener('load', function() {
+            const preloader = document.createElement('div');
+            preloader.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--primary-bg);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+                transition: opacity 0.5s ease;
+            `;
+            
+            preloader.innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; color: var(--neon-blue); margin-bottom: 20px;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div style="color: var(--text-primary); font-family: 'Orbitron', monospace;">
+                        Loading...
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(preloader);
+            
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
